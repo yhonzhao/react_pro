@@ -8,7 +8,7 @@ module.exports = {
         './app/index'
     ],
     output: {
-        path: path.join(__dirname,"./static"),
+        path: path.join(__dirname, "./static"),
         filename: 'bundle.js',
         publicPath: '/static/'
     },
@@ -38,13 +38,21 @@ module.exports = {
             },
             {
                 test: /\.less$/,
-                use: [{
-                    loader: "style-loader" // creates style nodes from JS strings
-                }, {
-                    loader: "css-loader" // translates CSS into CommonJS
-                }, {
-                    loader: "less-loader" // compiles Less to CSS
-                }]
+                include: /node_modules\/antd/,
+                use: [
+                    'style-loader',
+                    { loader: 'css-loader', options: { modules: false } },
+                    'less-loader'
+                ]
+            },
+            {
+                test: /\.less$/,
+                exclude: /node_modules\/antd/,
+                use: [
+                    'style-loader',
+                    { loader: 'css-loader', options: { modules: true } },
+                    'less-loader'
+                ]
             },
             {
                 test: /\.css$/,
@@ -53,6 +61,10 @@ module.exports = {
             {
                 test: /\.(png|jpg|gif)$/,
                 loader: 'url-loader?limit=8192000',
+            },
+            {
+                test: /\.svg/,
+                use: ['file-loader']
             }
         ]
     }

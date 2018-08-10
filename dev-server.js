@@ -14,8 +14,10 @@ var port = 3000;
 var proxy = httpProxy.createProxyServer({});
 var compiler = webpack(config);
 
+
 app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }));
 app.use(webpackHotMiddleware(compiler));
+app.use('/static', express.static(__dirname + '/static'));
 
 app.use(function(req, res){
     var service = req.get('x-service');
