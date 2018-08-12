@@ -1,5 +1,4 @@
 import React from 'react';
-import { Layout} from 'antd'
 
 export default class App extends React.Component {
 
@@ -14,7 +13,7 @@ export default class App extends React.Component {
 
     render() {
         return (
-            <div>
+            <div style={{height:"100%",margin:0}}>
                 {this.props.children}
             </div>
         )

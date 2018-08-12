@@ -149,7 +149,7 @@ export default class GlobalHeader extends PureComponent {
             </Dropdown>
           ) : (
             <div style={{display:"inline"}}>
-              登录 | 注册
+              <Link to="/login"> 登录 </Link> | <Link to="/register"> 注册 </Link> 
             </div>
           )}
         </div>

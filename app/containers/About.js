@@ -3,7 +3,7 @@ import { push } from 'react-router-redux'
 import { connect } from 'react-redux';
 
 @connect(state => ({
-    toute: state.routing
+    toute: state.route
 }), {
     push
 })
