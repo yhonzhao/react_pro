@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 
 
 @connect(state=>({
-    toute: state.routing
+    route: state.routing
 }),{
     push
 })
